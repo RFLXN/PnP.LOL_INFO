@@ -20,7 +20,7 @@
       "europe": "europe.api.riotgames.com"
     }
   },
-  "path": {
+  "endpoint": {
     "summoner": {
       "host": "PLATFORM",
       "byName": {
