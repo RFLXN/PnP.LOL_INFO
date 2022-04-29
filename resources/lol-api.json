@@ -1,5 +1,5 @@
 {
-  "api_key": "PUT_YOUR_SECRET_API_KEY_HERE",
+  "apiKey": "RGAPI-70322ca4-cf0d-4738-9266-ecdf6fcce61a",
   "host": {
     "platform": {
       "br1": "br1.api.riotgames.com",

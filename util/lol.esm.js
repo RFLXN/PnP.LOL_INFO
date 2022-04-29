@@ -1,13 +1,4 @@
-import { resolve } from "path";
-import { loadJson } from "./json.esm";
-
-const API_RESOURCE_FILE_PATH = resolve(__dirname, "../resources/lol-api.json");
-
-let lolApi;
-
-(async () => {
-  lolApi = await loadJson(API_RESOURCE_FILE_PATH);
-})();
+const lolApi = require("../resources/lol-api.json");
 
 class LolApi {
   static getRegionalHostKeys() {
@@ -19,14 +10,14 @@ class LolApi {
   }
 
   static getRegionalHost(region) {
-    if (!region in this.getRegionalHostKeys()) {
+    if (!this.getRegionalHostKeys().includes(region)) {
       throw new InvalidHostKeyError(`${region} is invalid regional host key`);
     }
     return lolApi.host.regional[region];
   }
 
   static getPlatformHost(platform) {
-    if (!platform in this.getPlatformHostKeys()) {
+    if (!this.getPlatformHostKeys().includes(platform)) {
       throw new InvalidHostKeyError(`${platform} is invalid platform host key`);
     }
     return lolApi.host.platform[platform];
@@ -34,6 +25,10 @@ class LolApi {
 
   static getApiEndpoints() {
     return lolApi.endpoint;
+  }
+
+  static getApiKey() {
+    return lolApi.apiKey;
   }
 }
 
@@ -44,9 +39,9 @@ class LolApiUrlBuilder {
   #qs = new Map();
 
   setHost(host) {
-    if (host in LolApi.getPlatformHostKeys()) {
+    if (LolApi.getPlatformHostKeys().includes(host)) {
       this.#host = LolApi.getPlatformHost(host);
-    } else if (host in LolApi.getRegionalHostKeys()) {
+    } else if (LolApi.getRegionalHostKeys().includes(host)) {
       this.#host = LolApi.getRegionalHost(host);
     } else {
       throw new InvalidHostKeyError(`${host} is invalid host key`);
@@ -98,7 +93,7 @@ class LolApiUrlBuilder {
     if (url.endsWith("?")) url = url.slice(0, -1);
     if (url.endsWith("&")) url = url.slice(0, -1);
 
-    return url;
+    return "https://" + url;
   }
 }
 
