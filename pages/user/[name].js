@@ -3,24 +3,28 @@ import { LolApi, LolApiUrlBuilder } from "../../util/lol.esm";
 import axios from "axios";
 
 export async function getServerSideProps(context) {
-  const { name, host } = context.query;
+  const { name, host } = context.query; // get path parameter "name" and get query string "host"
 
-  const endpoint = LolApi.getApiEndpoints().summoner.byName;
+  const endpoint = LolApi.getApiEndpoints().summoner.byName; // get endpoint object
+
+  // build API URL with using builder
   const url = new LolApiUrlBuilder().setEndpoint(endpoint).setHost(host).setParam("{summonerName}", name).build();
 
+  // send request to Riot API
   const res = await axios.request({
     url,
     method: endpoint.method,
     headers: {
-      "X-Riot-Token": LolApi.getApiKey(),
+      "X-Riot-Token": LolApi.getApiKey(), // we must set header X-Riot-Token
     },
   });
 
+  // pass data as props
   return { props: { data: res.data } };
 }
 
+// we can get passed props from getServerSideProps
 export default function User({ data }) {
-  console.log(data);
   return (
     <div>
       <Head>
