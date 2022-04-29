@@ -22,6 +22,7 @@
   },
   "path": {
     "summoner": {
+      "host": "PLATFORM",
       "byName": {
         "path": "/lol/summoner/v4/summoners/by-name/{summonerName}",
         "method": "GET",
@@ -48,6 +49,48 @@
         "method": "GET",
         "param": [
           "{encryptedAccountId}"
+        ]
+      }
+    },
+    "match": {
+      "host": "REGIONAL",
+      "byPuuid": {
+        "path": "/lol/match/v5/matches/by-puuid/{puuid}/ids",
+        "method": "GET",
+        "param": [
+          "{puuid}"
+        ],
+        "qs": [
+          "startTime",
+          "endTime",
+          "queue",
+          "type",
+          "start",
+          "count"
+        ]
+      },
+      "matches": {
+        "path": "/lol/match/v5/matches/{matchId}",
+        "method": "GET",
+        "param": [
+          "{matchId}"
+        ]
+      },
+      "timeline": {
+        "path": "/lol/match/v5/matches/{matchId}/timeline",
+        "method": "GET",
+        "param": [
+          "{matchId}"
+        ]
+      }
+    },
+    "championMastery": {
+      "host": "PLATFORM",
+      "bySummoner": {
+        "path": "/lol/champion-mastery/v4/champion-masteries/by-summoner/{encryptedSummonerId}",
+        "method": "GET",
+        "param": [
+          "{encryptedSummonerId}"
         ]
       }
     }
