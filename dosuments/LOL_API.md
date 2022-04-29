@@ -1,5 +1,11 @@
 # League of Legends API
 
+## CAREFUL!
+When we use Riot API, We must set Header likes below,
+```http request
+X-Riot-Token: "GENERATED_API_KEY_HERE"
+```
+
 ## Required Endpoints
 
 ### /lol/summoner/v4/summoners/by-name/{summonerName}
