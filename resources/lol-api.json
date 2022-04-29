@@ -1,0 +1,55 @@
+{
+  "api_key": "PUT_YOUR_SECRET_API_KEY_HERE",
+  "host": {
+    "platform": {
+      "br1": "br1.api.riotgames.com",
+      "eun1": "eun1.api.riotgames.com",
+      "euw1": "euw1.api.riotgames.com",
+      "jp1": "jp1.api.riotgames.com",
+      "kr": "kr.api.riotgames.com",
+      "la1": "la1.api.riotgames.com",
+      "la2": "la2.api.riotgames.com",
+      "na1": "na1.api.riotgames.com",
+      "oc1": "oc1.api.riotgames.com",
+      "tr1": "tr1.api.riotgames.com",
+      "ru": "ru.api.riotgames.com"
+    },
+    "regional": {
+      "americas": "americas.api.riotgames.com",
+      "asia": "asia.api.riotgames.com",
+      "europe": "europe.api.riotgames.com"
+    }
+  },
+  "path": {
+    "summoner": {
+      "byName": {
+        "path": "/lol/summoner/v4/summoners/by-name/{summonerName}",
+        "method": "GET",
+        "param": [
+          "{summonerName}"
+        ]
+      },
+      "bySummonerId": {
+        "path": "/lol/summoner/v4/summoners/{encryptedSummonerId}",
+        "method": "GET",
+        "param": [
+          "{encryptedSummonerId}"
+        ]
+      },
+      "byPuuid": {
+        "path": "/lol/summoner/v4/summoners/by-puuid/{encryptedPUUID}",
+        "method": "GET",
+        "param": [
+          "{encryptedPUUID}"
+        ]
+      },
+      "byAccount": {
+        "path": "/lol/summoner/v4/summoners/by-account/{encryptedAccountId}",
+        "method": "GET",
+        "param": [
+          "{encryptedAccountId}"
+        ]
+      }
+    }
+  }
+}
