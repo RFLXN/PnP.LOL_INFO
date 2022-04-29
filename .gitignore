@@ -34,3 +34,6 @@ yarn-error.log*
 # lock file
 yarn.lock
 package-lock.json
+
+# Jetbrains IDE project file
+/.idea/
