@@ -2,9 +2,20 @@
 
 PnP Web Project Team
 
+# Development Target
+
+Web Application for Viewing League of Legends Summoner/Match Data
+
 # TODO
 
-## pages
+## At next meeting
+
+* allocate development part
+* decide index page layout
+* decide user page layout
+* decide match page layout
+
+## Pages
 
 * index.js
     * Design: page layout
@@ -20,7 +31,7 @@ PnP Web Project Team
     * Implement: print match detail data
     * Implement: print match timeline
 
-## business logic
+## Business logic
 
 * fetch match data by id
 * fetch match timeline by id
