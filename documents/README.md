@@ -24,8 +24,14 @@
     * globals.css : global css file
     * \*\*/\*.module.css: next.js css module file
 * resources/ : business logic resources directory
-    * lol-api.json: League of Legends API data (api_key and endpoints url)
+    * lol-api.json: League of Legends API data (endpoints url)
+    * lol-api-key.json: Riot API key
+    * assets/: League of Legends game assets
+        * lol-assets.tar.gz: League of Legends game asset package file
+        * lol/: asset files (unpacked files from lol-assets.tar.gz)
 * util/ : utility functions/classes directory
-    * lol.esm.js : League of Legends API utility functions/classes file
+    * lol.mjs : League of Legends API utility functions/classes file
+    * json.mjs: function for load json file to js object
+    * unpack.msj: function for unpack tar.gz file
 * function/ : business login functions/classes directory
-    * lol.esm.js: League of Legends Business Logic functions/classes file
+    * lol.mjs: League of Legends Business Logic functions/classes file

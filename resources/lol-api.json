@@ -1,5 +1,4 @@
 {
-  "apiKey": "YOUR_API_KEY_HERE",
   "host": {
     "platform": {
       "br1": "br1.api.riotgames.com",
@@ -93,6 +92,14 @@
           "{encryptedSummonerId}"
         ]
       }
+    },
+    "champion": {
+      "host": "PLATFORM",
+      "championRotations": {
+        "path": "/lol/platform/v3/champion-rotations",
+        "method": "GET"
+      }
     }
-  }
+  },
+  "constantAssets": "https://ddragon.leagueoflegends.com/cdn/dragontail-12.9.1.tgz"
 }

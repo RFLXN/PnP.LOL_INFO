@@ -1,4 +1,5 @@
-const lolApi = require("../resources/lol-api.json");
+import lolApi from "../resources/lol-api.json" assert { type: "json" };
+import lolApiKey from "../resources/lol-api-key.json" assert { type: "json" };
 
 /**
  * League of Legends data store class. load data from /resources/lol-api.json.
@@ -59,7 +60,15 @@ class LolApiData {
    * @returns {string} api key
    */
   static getApiKey() {
-    return lolApi.apiKey;
+    return lolApiKey.apiKey;
+  }
+
+  /**
+   * get URL of constants assets
+   * @returns {string} - CDN URL (file packaged to ".tgz")
+   */
+  static getConstantAssets() {
+    return lolApi.constantAssets;
   }
 }
 
