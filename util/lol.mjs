@@ -64,11 +64,11 @@ class LolApiData {
   }
 
   /**
-   * get URL of constants assets
-   * @returns {string} - CDN URL (file packaged to ".tgz")
+   * get asset info
+   * @returns {{ url: string, downloadPath: string, unpackPath: string, assetPath: string }} - asset data
    */
-  static getConstantAssets() {
-    return lolApi.constantAssets;
+  static getAssetInfo() {
+    return lolApi.asset;
   }
 }
 

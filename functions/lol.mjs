@@ -6,6 +6,7 @@ import { promisify } from "util";
 import { finished as sf } from "stream";
 import { fileURLToPath } from "url";
 import { unpackTarGz } from "../util/unpack.mjs";
+import { loadJson } from "../util/json.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -152,18 +153,21 @@ class LolApiExecutor {
   }
 }
 
-class LolConstantAssetsManager {
-  static #PACKAGE_FILE_PATH = resolve(__dirname, "../resources/assets/lol-assets.tar.gz");
-  static #ASSETS_DIR_PATH = resolve(__dirname, "../resources/assets/lol/");
+/**
+ * class for download and unpack LOL assets
+ */
+class LolAssetDownloader {
+  static PACKAGE_FILE_PATH = resolve(__dirname, "../", LolApiData.getAssetInfo().downloadPath);
+  static ASSETS_DIR_PATH = resolve(__dirname, "../", LolApiData.getAssetInfo().unpackPath);
 
   /**
    * download constant assets package file
    * @async
    */
   static async downloadPackage() {
-    const writer = fs.createWriteStream(this.#PACKAGE_FILE_PATH);
+    const writer = fs.createWriteStream(this.PACKAGE_FILE_PATH);
     const response = await axios.request({
-      url: LolApiData.getConstantAssets(),
+      url: LolApiData.getAssetInfo().url,
       method: "GET",
       responseType: "stream"
     });
@@ -171,10 +175,86 @@ class LolConstantAssetsManager {
     return finished(writer);
   }
 
+  /**
+   * unpack downloaded asset package file
+   * @async
+   */
   static async unpack() {
-    await unpackTarGz(this.#PACKAGE_FILE_PATH, this.#ASSETS_DIR_PATH);
+    await unpackTarGz(this.PACKAGE_FILE_PATH, this.ASSETS_DIR_PATH);
   }
 
 }
 
-export { LolApiExecutor, LolConstantAssetsManager };
+/**
+ * class for manage and get LOL assets
+ */
+class LolAssetManager {
+  static ASSET_PATH = resolve(__dirname, "../", LolApiData.getAssetInfo().assetPath);
+
+  /**
+   * get partial data of all champions
+   * @async
+   * @returns {Promise<Object>}
+   */
+  static async getChampions() {
+    return await loadJson(resolve(this.ASSET_PATH, "champion.json"));
+  }
+
+  /**
+   * get full data of all champions
+   * @async
+   * @returns {Promise<Object>}
+   */
+  static async getFullChampions() {
+    return await loadJson(resolve(this.ASSET_PATH, "championFull.json"));
+  }
+
+  /**
+   * get full champion data by champion name
+   * @async
+   * @param {string} championName - champion name
+   * @returns {Promise<Object>}
+   */
+  static async getChampion(championName) {
+    return await loadJson(resolve(this.ASSET_PATH, "champion", `${championName}.json`));
+  }
+
+  /**
+   * get items data
+   * @async
+   * @returns {Promise<Object>}
+   */
+  static async getItems() {
+    return await loadJson(resolve(this.ASSET_PATH, "item.json"));
+  }
+
+  /**
+   * get maps data
+   * @async
+   * @returns {Promise<Object>}
+   */
+  static async getMaps() {
+    return await loadJson(resolve(this.ASSET_PATH, "map.json"));
+  }
+
+  /**
+   * get runes data
+   * @async
+   * @returns {Promise<Object>}
+   */
+  static async getRunes() {
+    return await loadJson(resolve(this.ASSET_PATH, "runesReforged.json"));
+  }
+
+  /**
+   * get summoner spells data
+   * @async
+   * @returns {Promise<Object>}
+   */
+  static async getSummonerSpells() {
+    return await loadJson(resolve(this.ASSET_PATH, "summoner.json"));
+  }
+}
+
+
+export { LolApiExecutor, LolAssetDownloader, LolAssetManager };

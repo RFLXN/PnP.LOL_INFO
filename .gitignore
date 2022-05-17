@@ -37,3 +37,9 @@ package-lock.json
 
 # Jetbrains IDE project file
 /.idea/
+
+# test file
+test.mjs
+
+# assets
+/resources/assets/**/*

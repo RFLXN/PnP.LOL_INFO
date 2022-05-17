@@ -101,5 +101,10 @@
       }
     }
   },
-  "constantAssets": "https://ddragon.leagueoflegends.com/cdn/dragontail-12.9.1.tgz"
+  "asset": {
+    "url": "https://ddragon.leagueoflegends.com/cdn/dragontail-12.9.1.tgz",
+    "downloadPath": "resources/assets/lol-assets.tar.gz",
+    "unpackPath": "resources/assets/lol/",
+    "assetPath": "resources/assets/lol/12.9.1/data/ko_KR"
+  }
 }
