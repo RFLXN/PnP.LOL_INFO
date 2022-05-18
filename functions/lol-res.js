@@ -66,7 +66,7 @@ class LolMatchDataExtractor {
    * @returns {number} game end date
    */
   get gameEnd() {
-    return this.#info.gameEnd;
+    return this.#info.gameEndTimestamp;
   }
 
   /**
@@ -217,8 +217,8 @@ class LolMatchParticipantDataExtractor {
    * get gold per minute
    * @returns {number} gold per minute
    */
-  get golPerpMinute() {
-    return this.participant.challenges.goldPreMinute;
+  get goldPerMinute() {
+    return this.participant.challenges.goldPerMinute;
   }
 
   /**
