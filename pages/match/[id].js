@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { LolApiExecutor } from "../../functions/lol.mjs";
-import { LolMatchDataExtractor } from "../../functions/lol-res";
-import { timestampToString } from "../../util/timestamp";
+import { LolMatchDataExtractor } from "../../functions/lol-res.mjs";
+import { timestampToString } from "../../util/timestamp.mjs";
 
 export async function getServerSideProps(context) {
   const { id, host } = context.query;

@@ -32,6 +32,8 @@
 * util/ : utility functions/classes directory
     * lol.mjs : League of Legends API utility functions/classes file
     * json.mjs: function for load json file to js object
-    * unpack.msj: function for unpack tar.gz file
+    * unpack.mjs: function for unpack tar.gz
+    * timestamp.mjs: function for process unix timestamp
 * function/ : business login functions/classes directory
-    * lol.mjs: League of Legends Business Logic functions/classes file
+    * lol.mjs: League of Legends Business Logic functions/classes
+    * lol-res.mjs: classes for wrap and process LOL API response

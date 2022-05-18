@@ -150,7 +150,7 @@ class LolMatchParticipantDataExtractor {
   }
 
   /**
-   * get position (lanne)
+   * get position (lane)
    * @returns {"TOP" | "MIDDLE" | "JUNGLE" | "SUPPORT" | "BOTTOM"} position
    */
   get position() {

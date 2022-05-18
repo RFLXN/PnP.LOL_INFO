@@ -75,7 +75,7 @@ export default function User({ data }) {
 
         <hr />
 
-        <h2>Matches</h2>
+        <h2>Matches (Match ID is Clickable)</h2>
         <ul>
           {data.matches.map((id) => (
             <li key={id}>

@@ -188,16 +188,21 @@ class LolAssetDownloader {
 /**
  * class for manage and get LOL assets
  */
-class LolAssetManager {
+class LolAssetDataManager {
   static ASSET_PATH = resolve(__dirname, "../", LolApiData.getAssetInfo().assetPath);
+  #language;
+
+  constructor(languageCode) {
+    this.#language = languageCode;
+  }
 
   /**
    * get partial data of all champions
    * @async
    * @returns {Promise<Object>}
    */
-  static async getChampions() {
-    return await loadJson(resolve(this.ASSET_PATH, "champion.json"));
+  async getChampions() {
+    return await loadJson(resolve(LolAssetDataManager.ASSET_PATH, this.#language, "champion.json"));
   }
 
   /**
@@ -205,8 +210,8 @@ class LolAssetManager {
    * @async
    * @returns {Promise<Object>}
    */
-  static async getFullChampions() {
-    return await loadJson(resolve(this.ASSET_PATH, "championFull.json"));
+  async getFullChampions() {
+    return await loadJson(resolve(LolAssetDataManager.ASSET_PATH, this.#language, "championFull.json"));
   }
 
   /**
@@ -215,8 +220,8 @@ class LolAssetManager {
    * @param {string} championName - champion name
    * @returns {Promise<Object>}
    */
-  static async getChampion(championName) {
-    return await loadJson(resolve(this.ASSET_PATH, "champion", `${championName}.json`));
+  async getChampion(championName) {
+    return await loadJson(resolve(LolAssetDataManager.ASSET_PATH, this.#language, "champion", `${championName}.json`));
   }
 
   /**
@@ -224,8 +229,8 @@ class LolAssetManager {
    * @async
    * @returns {Promise<Object>}
    */
-  static async getItems() {
-    return await loadJson(resolve(this.ASSET_PATH, "item.json"));
+  async getItems() {
+    return await loadJson(resolve(LolAssetDataManager.ASSET_PATH, this.#language, "item.json"));
   }
 
   /**
@@ -233,8 +238,8 @@ class LolAssetManager {
    * @async
    * @returns {Promise<Object>}
    */
-  static async getMaps() {
-    return await loadJson(resolve(this.ASSET_PATH, "map.json"));
+  async getMaps() {
+    return await loadJson(resolve(LolAssetDataManager.ASSET_PATH, this.#language, "map.json"));
   }
 
   /**
@@ -242,8 +247,8 @@ class LolAssetManager {
    * @async
    * @returns {Promise<Object>}
    */
-  static async getRunes() {
-    return await loadJson(resolve(this.ASSET_PATH, "runesReforged.json"));
+  async getRunes() {
+    return await loadJson(resolve(LolAssetDataManager.ASSET_PATH, this.#language, "runesReforged.json"));
   }
 
   /**
@@ -251,10 +256,10 @@ class LolAssetManager {
    * @async
    * @returns {Promise<Object>}
    */
-  static async getSummonerSpells() {
-    return await loadJson(resolve(this.ASSET_PATH, "summoner.json"));
+  async getSummonerSpells() {
+    return await loadJson(resolve(LolAssetDataManager.ASSET_PATH, this.#language, "summoner.json"));
   }
 }
 
 
-export { LolApiExecutor, LolAssetDownloader, LolAssetManager };
+export { LolApiExecutor, LolAssetDownloader, LolAssetDataManager };

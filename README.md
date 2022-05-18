@@ -6,15 +6,6 @@ PnP Web Project Team
 
 Web Application for Viewing League of Legends Summoner/Match Data
 
-# TODO
-
-## At next meeting
-
-* allocate development part
-* decide index page layout
-* decide user page layout
-* decide match page layout
-
 ## Pages
 
 * index.js

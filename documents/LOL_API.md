@@ -1,7 +1,9 @@
 # League of Legends API
 
 ## CAREFUL!
+
 When we use Riot API, We must set Header likes below,
+
 ```http request
 X-Riot-Token: "GENERATED_API_KEY_HERE"
 ```
@@ -9,34 +11,40 @@ X-Riot-Token: "GENERATED_API_KEY_HERE"
 ## Required Endpoints
 
 ### /lol/summoner/v4/summoners/by-name/{summonerName}
+
 * get summoner data by name
 * host: platform
 * you can get summoner id, account id, puuid, name, summoner level
 
 ### /lol/match/v5/matches/by-puuid/{puuid}/ids
+
 * get summoner's match list
 * host: regional
 * query params
-  * start: default 0 / start index
-  * count: default 20, max 100 / match numbers
-  * queue: int / filter by queue id
-  * type: string / filter by match type
+    * start: default 0 / start index
+    * count: default 20, max 100 / match numbers
+    * queue: int / filter by queue id
+    * type: string / filter by match type
 * you can get array of string includes match id
 
 ### /lol/match/v5/matches/{matchId}
+
 * get match data
 * host: regional
 * response example here: ./response-example/match_data_response.json
 
 ### /lol/match/v5/matches/{matchId}/timeline
+
 * get match timeline
 * host: regional
 
 ### /lol/champion-mastery/v4/champion-masteries/by-summoner/{encryptedSummonerId}
+
 * get array of champion mastery
 * host: platform
 
 ## API Using Flow
+
 1. get puuid and summoner id from SUMMONER-V4/by-name endpoint
 2. get user's mastery from CHAMPION-MASTERY-V4/by-summoner with summoner id
 3. rendering user page champion mastery
