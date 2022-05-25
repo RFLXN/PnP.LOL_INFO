@@ -1,7 +1,14 @@
+import { AppBar, Toolbar } from "@mui/material";
+import Link from "next/link";
+
 const NavBar = () => {
   return (
     <nav>
-      {/* TODO: Implement NavBar*/}
+      <AppBar position="static">
+        <Toolbar>
+          <Toolbar variant="h6"><Link href="/"><a>PnPLoL</a></Link></Toolbar>
+        </Toolbar>
+      </AppBar>
     </nav>
   );
 };

@@ -46,6 +46,7 @@ export default function User({ data }) {
     </Head>
   );
 
+  // if flag == false, error occurred when fetching data from api
   if (data.flag) {
     return (<>
       {headTag}

@@ -55,6 +55,8 @@ export default function Match({ data }) {
       <title>match</title>
     </Head>
   );
+
+  // if flag == false, error occurred when fetching data from api
   if (data.flag) {
     return (<>
       {headTag}
