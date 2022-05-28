@@ -1,14 +1,15 @@
-import Head from "next/head";
 import { LolApiExecutor } from "../../functions/lol.mjs";
 import { LolApiHostResolver } from "../../util/lol.mjs";
 import Link from "next/link";
+import HeadBase from "../../components/head";
+import { useRouter } from "next/router";
 
 export async function getServerSideProps(context) {
   const { name, host } = context.query; // get path parameter "name" and get query string "host"
 
   let flag = true;
-  let user = undefined;
-  let matches = undefined;
+  let user = null;
+  let matches = null;
   // fetch user data from Riot API
   try {
     console.log(`user/[name].js: fetching user data: ${name} / ${host}`);
@@ -40,16 +41,13 @@ export async function getServerSideProps(context) {
 
 // we can get props from getServerSideProps
 export default function User({ data }) {
-  const headTag = (
-    <Head>
-      <title>user</title>
-    </Head>
-  );
+  const router = useRouter();
+  const { name } = router.query;
 
   // if flag == false, error occurred when fetching data from api
   if (data.flag) {
     return (<>
-      {headTag}
+      <HeadBase subTitle={`소환사 "${name}"`} />
       <main>
         <h1>USER PAGE</h1>
         <h2>TODO: Design Page Layout</h2>
@@ -97,7 +95,7 @@ export default function User({ data }) {
     </>);
   } else {
     return (<>
-      {headTag}
+      <HeadBase subTitle={`소환사 "${name}"`} />
       <main>
         <h1>ERROR!</h1>
       </main>

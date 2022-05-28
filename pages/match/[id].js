@@ -1,7 +1,8 @@
-import Head from "next/head";
 import { LolApiExecutor } from "../../functions/lol.mjs";
 import { LolMatchDataExtractor } from "../../functions/lol-res.mjs";
 import { timestampToString } from "../../util/timestamp.mjs";
+import HeadBase from "../../components/head";
+import { useRouter } from "next/router";
 
 export async function getServerSideProps(context) {
   const { id, host } = context.query;
@@ -25,6 +26,9 @@ export async function getServerSideProps(context) {
  * @param {data: {flag: boolean, matchData: LolMatchDataExtractor}}
  */
 export default function Match({ data }) {
+  const router = useRouter();
+  const { id } = router.query;
+
   const matchData = new LolMatchDataExtractor(data.matchData);
 
   /**
@@ -50,16 +54,10 @@ export default function Match({ data }) {
     </>);
   };
 
-  const headTag = (
-    <Head>
-      <title>match</title>
-    </Head>
-  );
-
   // if flag == false, error occurred when fetching data from api
   if (data.flag) {
     return (<>
-      {headTag}
+      <HeadBase subTitle={`매치 "${id}"`} />
       <main>
         <h1>MATCH DATA</h1>
         match id: {matchData.matchId} <br />
@@ -75,7 +73,7 @@ export default function Match({ data }) {
     </>);
   } else {
     return (<>
-      {headTag}
+      <HeadBase subTitle={`매치 "${id}"`} />
       <main>
         <h1>MATCH DATA</h1>
         failed to fetch data
