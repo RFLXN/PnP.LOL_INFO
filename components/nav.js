@@ -16,14 +16,14 @@ const Search = styled("div")(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.secondary.light, 0.15),
   "&:hover": {
-    backgroundColor: alpha(theme.palette.secondary.light, 0.25)
+    backgroundColor: alpha(theme.palette.secondary.light, 0.25),
   },
   marginLeft: 0,
   width: "100%",
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(1),
-    width: "auto"
-  }
+    width: "auto",
+  },
 }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
@@ -33,7 +33,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   pointerEvents: "none",
   display: "flex",
   alignItems: "center",
-  justifyContent: "center"
+  justifyContent: "center",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -47,18 +47,17 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     [theme.breakpoints.up("sm")]: {
       width: "12ch",
       "&:focus": {
-        width: "20ch"
-      }
-    }
+        width: "20ch",
+      },
+    },
   },
-  autoComplete: "nickname"
+  autoComplete: "nickname",
 }));
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
-  position: "static"
+  position: "static",
 }));
-
 
 const NavBar = ({ theme }) => {
   const [summonerName, setSummonerName] = useState("");
@@ -77,17 +76,12 @@ const NavBar = ({ theme }) => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box>
       <StyledAppBar>
         <Container>
           <Toolbar>
             <>{/* ADD ICON HERE */}</>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ flexGrow: 1, display: "block" }}
-            >
+            <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1, display: "block" }}>
               <Link href="/" passHref>
                 <a>PnPLoL</a>
               </Link>
